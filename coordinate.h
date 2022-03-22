@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef COORDINATE_H
+# define COORDINATE_H
+
 typedef struct s_coordinate
 {
 	double	x;
@@ -19,3 +22,5 @@ typedef struct s_coordinate
 
 t_coor	gen_coor(const double x, const double y, const double z);
 t_coor	*set_coor(t_coor *vec, const double x, const double y, const double z);
+
+#endif
