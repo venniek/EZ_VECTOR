@@ -34,7 +34,8 @@ t_3value	multi_3value(t_3value value1, t_3value value2)
 
 t_3value	divide_one(t_3value value, double t)
 {
-	if (t == 0)
+	
+	if (t < 0.000001 && t > -0.000001)
 	{
 		write(2, "divide zero error\n", 18);
 		return (value);
