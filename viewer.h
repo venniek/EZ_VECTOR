@@ -16,7 +16,7 @@ typedef struct s_viewer
 	t_camera camera;
 	t_vec		uvec_horizon;
 	t_vec		uvec_vertical;
-	t_point		starting_point;
+	t_vec		starting_vec;
 } t_viewer;
 
 t_viewer make_viewer(t_point position, t_vec dir, double fov);

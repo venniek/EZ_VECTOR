@@ -41,7 +41,7 @@ t_viewer make_viewer(t_point position, t_vec dir, double fov)
 		viewer.uvec_horizon = vec_unit(vec_outer(viewer.camera.uvec_direction, make_xyz(0, 0, 1)));
 		viewer.uvec_vertical = vec_unit(vec_outer(viewer.uvec_horizon, viewer.camera.uvec_direction));
 	}
-	viewer.starting_point = plus_value(
+	viewer.starting_vec = plus_value(
 		plus_value(viewer.camera.position, multi_one(viewer.camera.uvec_direction, viewer.camera.fol)), 
 		plus_value(
 			multi_one(viewer.uvec_horizon, (double)(1 - WIN_WIDTH) / 2),	// horizion
