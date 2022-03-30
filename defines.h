@@ -1,4 +1,4 @@
- #ifndef DEFINES_H
+#ifndef DEFINES_H
 # define DEFINES_H
 
 # define TRUE	1

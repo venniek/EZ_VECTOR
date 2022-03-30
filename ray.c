@@ -8,4 +8,3 @@ t_ray make_ray(t_point source, t_vec dir)
 	ray.dir = vec_unit(dir);
 	return (ray);
 }
-

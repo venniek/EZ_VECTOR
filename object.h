@@ -38,11 +38,12 @@ typedef struct  s_hit
 {
     int     is_hit;
     t_point hit_point;
+    t_vec   hit_normal;
     double  t;
-    int index;
-    t_ratio         ratio_reflect;
+    int     index;
+    t_ratio ratio_reflect;
 }   t_hit;
 
-t_hit hit(t_ray ray, t_object *objects);
+t_hit hit_object(t_ray ray, t_object *objects, int is_shadow);
 
 #endif

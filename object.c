@@ -1,5 +1,24 @@
 #include "object.h"
 
+t_hit   hit_plane(t_ray ray, t_plane *plane)
+{
+    t_hit result;
+
+    // 1. ray가 평행/포함하는지 검사
+    if (fabs(vec_inner(ray.dir, plane->normal)) <= 0.000001)
+    {
+        result.is_hit = FALSE;
+        return (result);
+    }
+    result.is_hit = TRUE;
+    // 2. t값 구하기
+    result.t = vec_inner(minus_value(plane->point, ray.source), plane->normal) / vec_inner(plane->normal, ray.dir);
+    // 3. 좌표값 구하기
+    result.hit_point = plus_value(ray.source, multi_one(ray.dir, result.t));
+    result.hit_normal = plane->normal;
+    result.ratio_reflect = plane->ratio_reflect;
+    return (result);
+}
 
 t_hit hit_sphere(t_ray ray, t_sphere *sphere)
 {
@@ -21,11 +40,12 @@ t_hit hit_sphere(t_ray ray, t_sphere *sphere)
             multi_one(ray.dir, result.t),
             ray.source);
         result.ratio_reflect = sphere->ratio_reflect;
+        result.hit_normal = vec_unit(minus_value(result.hit_point, sphere->center));
 	} 
 	return (result);
 }
 
-t_hit hit(t_ray ray, t_object *objects)
+t_hit hit_object(t_ray ray, t_object *objects, int is_shadow)
 {
     t_hit   min_ret;
     t_hit   tmp;
@@ -38,18 +58,24 @@ t_hit hit(t_ray ray, t_object *objects)
     min_ret.is_hit = FALSE;
     while (iter != NULL)
     {
-        //if (objects->type == TYPE_S)
-        tmp = hit_sphere(ray, (t_sphere *)iter);
-        // if (objects->type == TYPE_P)
-        //     return (hit_plane(ray, (t_plane *)objects));
-        // if (objects->type == TYPE_C)
-        //     return (hit_cylinder(ray, (t_cylinder *)objects));
+        if (iter->type == TYPE_S)
+            tmp = hit_sphere(ray, (t_sphere *)iter);
+        else if (iter->type == TYPE_P)
+            tmp = hit_plane(ray, (t_plane *)iter);
         if (tmp.is_hit == TRUE)
         {
-            if (tmp.t >= 0 && tmp.t < min_ret.t)
+            if (is_shadow == TRUE)
             {
-                min_ret = tmp;
-                min_ret.index = idx;
+               if (tmp.t > 0.000001)
+                    return (tmp);
+            }
+            else
+            {
+               if (tmp.t >= 0.000001 && tmp.t < min_ret.t)
+               {
+                    min_ret = tmp;
+                    min_ret.index = idx;
+               }
             }
         }
         iter = iter->next;
