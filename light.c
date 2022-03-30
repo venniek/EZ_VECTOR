@@ -4,7 +4,7 @@ t_light make_light()
 {
 	t_light light;
 
-	light.point = make_xyz(0, 0, 10);
+	light.point = make_xyz(-4, 0, 2);
 	light.rgb = multi_one(make_rgb(255,255,255), 0.6);
 	light.ambient.color = make_rgb(255,255,255);
 	light.ambient.ratio = 0.3;

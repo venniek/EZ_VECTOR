@@ -13,10 +13,11 @@ int main()
 {
 	int	i;
 	int	j;
-	t_viewer v = make_viewer(make_xyz(5, 0, 50), make_xyz(0, 0, -1), 90);
+	t_viewer v = make_viewer(make_xyz(0, 0, -4), make_xyz(1, 0, 0), 90);
 	t_sphere temp;
 	t_sphere temp2;
 	t_plane planetemp;
+	t_cylinder	cylinder;
 	temp.r = 1.5;
 	temp.center = make_xyz(8, 7, 1);
 	temp.ratio_reflect = make_rgb(0.6, 0, 0);
@@ -32,8 +33,14 @@ int main()
 	planetemp.normal = make_xyz(0, 0, 1);
 	planetemp.ratio_reflect = make_rgb(0, 0.7, 0);
 	planetemp.type = TYPE_P;
-	planetemp.next = NULL;
-
+	planetemp.next = (t_object *)&cylinder;
+	cylinder.height = 3;
+	cylinder.point = make_xyz(8, -3, 0);
+	cylinder.normal = make_xyz(0, 0, 1);
+	cylinder.r = 2.0;
+	cylinder.ratio_reflect = make_rgb(0.7, 0, 0.7);
+	cylinder.type = TYPE_C;
+	cylinder.next = NULL;
 	i = -1; 
 	printf("P3\n%d %d\n255\n", WIN_WIDTH, WIN_HEIGHT);
 	while (++i < WIN_HEIGHT)
