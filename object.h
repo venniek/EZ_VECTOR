@@ -32,6 +32,7 @@ typedef struct  s_plane
 
     t_point  point;
     t_vec   normal;
+	double 	r;
 }   t_plane;
 
 typedef struct s_cylinder
@@ -44,6 +45,8 @@ typedef struct s_cylinder
     t_vec   normal;
     double  r;
     double  height;
+	t_plane up_cap;
+	t_plane down_cap;
 }   t_cylinder;
 
 typedef struct  s_hit

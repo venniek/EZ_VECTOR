@@ -13,7 +13,7 @@ int main()
 {
 	int	i;
 	int	j;
-	t_viewer v = make_viewer(make_xyz(0, 0, -4), make_xyz(1, 0, 0), 90);
+	t_viewer v = make_viewer(make_xyz(2, -3, 10), make_xyz(0.7, 0.2, -1), 90);
 	t_sphere temp;
 	t_sphere temp2;
 	t_plane planetemp;
@@ -30,10 +30,11 @@ int main()
 	temp2.next = (t_object *)&planetemp;
 	t_light	light = make_light();
 	planetemp.point = make_xyz(0, 0, 0);
-	planetemp.normal = make_xyz(0, 0, 1);
+	planetemp.normal = make_xyz(0, 0, -1);
 	planetemp.ratio_reflect = make_rgb(0, 0.7, 0);
 	planetemp.type = TYPE_P;
 	planetemp.next = (t_object *)&cylinder;
+	planetemp.r = INF;
 	cylinder.height = 3;
 	cylinder.point = make_xyz(8, -3, 0);
 	cylinder.normal = make_xyz(0, 0, 1);
@@ -41,6 +42,14 @@ int main()
 	cylinder.ratio_reflect = make_rgb(0.7, 0, 0.7);
 	cylinder.type = TYPE_C;
 	cylinder.next = NULL;
+	cylinder.up_cap.r = cylinder.r;
+	cylinder.up_cap.normal = cylinder.normal;
+	cylinder.up_cap.type = TYPE_P;
+	cylinder.up_cap.ratio_reflect = cylinder.ratio_reflect;
+	cylinder.up_cap.next = NULL;
+	cylinder.down_cap = cylinder.up_cap;
+	cylinder.down_cap.point = cylinder.point;
+	cylinder.up_cap.point = plus_value(multi_one(vec_unit(cylinder.normal), cylinder.height), cylinder.point);
 	i = -1; 
 	printf("P3\n%d %d\n255\n", WIN_WIDTH, WIN_HEIGHT);
 	while (++i < WIN_HEIGHT)

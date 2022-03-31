@@ -4,8 +4,8 @@ t_light make_light()
 {
 	t_light light;
 
-	light.point = make_xyz(-4, 0, 2);
-	light.rgb = multi_one(make_rgb(255,255,255), 0.6);
+	light.point = make_xyz(5, -2, 4.2);
+	light.rgb = multi_one(make_rgb(255,255,255), 0.7);
 	light.ambient.color = make_rgb(255,255,255);
 	light.ambient.ratio = 0.3;
 	light.next = 0;
@@ -18,7 +18,6 @@ void cal_diffuse(t_ray ray, t_hit hit, t_light *light)
 {
 	t_vec normal;
 	t_vec hit_to_light;
-	
 	normal = hit.hit_normal;
 	hit_to_light = vec_unit(minus_value(light->point, hit.hit_point));
 	light->diffuse.kd = vec_inner(normal, hit_to_light);
