@@ -1,16 +1,16 @@
 #ifndef LIGHT_H
 # define LIGHT_H
 
-# include <stdio.h>
 # include "ray.h"
 # include "object.h"
+# include "three_value.h"
+# include <stdio.h>
 
 typedef struct s_ambient
 {
 	double	ratio;
 	t_rgb	color;
-}   t_ambient;
-
+}	t_ambient;
 
 typedef struct s_diffuse
 {
@@ -35,6 +35,8 @@ typedef struct s_light
 }   t_light;
 
 t_light make_light();
+void cal_diffuse(t_ray ray, t_hit hit, t_light *light);
+void cal_specular(t_ray ray, t_hit hit, t_light *light);
 void print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj);
 
 #endif

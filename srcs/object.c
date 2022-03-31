@@ -1,4 +1,4 @@
-#include "object.h"
+#include "../incs/object.h"
 
 t_hit   hit_plane(t_ray ray, t_plane *plane)
 {

@@ -1,4 +1,4 @@
-#include "light.h"
+#include "../incs/light.h"
 
 t_light make_light()
 {

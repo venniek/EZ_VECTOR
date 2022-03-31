@@ -1,4 +1,4 @@
-#include "three_value.h"
+#include "../incs/three_value.h"
 
 t_3value	plus_value(t_3value value1, t_3value value2)
 {

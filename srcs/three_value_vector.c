@@ -1,4 +1,4 @@
-#include "three_value.h"
+#include "../incs/three_value.h"
 
 double	vec_inner(t_3value value1, t_3value value2)
 {

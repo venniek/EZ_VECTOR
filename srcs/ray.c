@@ -1,4 +1,4 @@
-#include "ray.h"
+#include "../incs/ray.h"
 
 t_ray make_ray(t_point source, t_vec dir)
 {
