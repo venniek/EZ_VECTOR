@@ -29,6 +29,7 @@ typedef struct  s_plane
 	struct s_object *next;
 	t_point  point;
 	t_vec   normal;
+	double  r;
 }   t_plane;
 
 typedef struct s_cylinder
