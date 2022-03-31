@@ -2,7 +2,6 @@
 # define THREE_VALUE_H
 
 # include <math.h>
-# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_3value
@@ -16,9 +15,6 @@ typedef t_3value t_vec;
 typedef t_3value t_point;
 typedef t_3value t_rgb;
 typedef t_3value t_ratio;
-
-//void		vset(t_3value *value, double x, double y, double z);
-//double	vec_length_sq(t_3value value);
 
 // three_value_1.c
 t_3value	make_xyz(double x, double y, double z);		//vec or point

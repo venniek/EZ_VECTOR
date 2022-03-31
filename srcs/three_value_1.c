@@ -1,4 +1,4 @@
-#include "three_value.h"
+#include "../incs/three_value.h"
 
 t_3value	make_xyz(double x, double y, double z)
 {
