@@ -50,10 +50,11 @@ int main(int ac, char **av)
 				)
 			);
 			t_hit result = hit_object(view_ray, (t_object *)d.object, FALSE);
-			// print_color(view_ray, result, &d.light, (t_object *)d.object);
+			print_color(view_ray, result, &d.light, (t_object *)d.object);
 		}
 	}
 	free_d(&d);
-	system("leaks minirt");
+	//while(1);
+	//system("leaks minirt");
 	return (0);
 }

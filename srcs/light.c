@@ -34,6 +34,8 @@ void cal_specular(t_ray ray, t_hit hit, t_light *light)
 	vec_light = minus_value(hit.hit_point, light->point);
 	vec_reflect = vec_unit(minus_value(vec_light, multi_one(hit.hit_normal, 2 * vec_inner(vec_light, hit.hit_normal))));
 	cam_to_hit = vec_unit(minus_value(ray.source, hit.hit_point));
+	light->specular.ks = 0.5;
+	light->specular.n = 8;
 	light->specular.spec = vec_inner(vec_reflect, cam_to_hit);
 	if (light->specular.spec < 0)
 		light->specular.spec = 0;
@@ -46,6 +48,8 @@ void print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj)
 
 	if (hit.is_hit == TRUE)
 	{
+		if (hit.ratio_reflect.xr == 153/255)
+			;
 		cal_diffuse(ray, hit, light);
 		cal_specular(ray, hit, light);
 		hit_shadow = hit_object(make_ray(hit.hit_point, minus_value(light->point, hit.hit_point)), obj, TRUE);

@@ -2,7 +2,7 @@
 
 void error_and_exit(char *errstr)
 {
-	write(2, "Error\n", 6);
+	write(2, "Error\ndetail: ", 14);
 	write(2, errstr, ft_strlen(errstr));
 	exit(1);
 }

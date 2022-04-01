@@ -14,7 +14,7 @@ INC = -I./incs
 SRCS = $(wildcard ./srcs/*.c)
 
 %.o: %.c
-	$(CC) -I. -I $(LIBFT_DIR) $(GNL_DIR) -c $< -o $@
+	$(CC) -I. -I $(LIBFT_DIR) $(GNL_DIR) -c $< -o $@ -g
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,7 +23,7 @@ $(NAME) : $(OBJS)
 	cp $(LIBFT_DIR)/$(LIBFT) .
 	$(MAKE) -C $(GNL_DIR)
 	cp $(GNL_DIR)/$(GNL) .
-	$(CC) $(CFLAGS) $(OBJS) -L. -lft $(GNL) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -L. -lft $(GNL) -o $@ -g
 
 all : $(NAME)
 

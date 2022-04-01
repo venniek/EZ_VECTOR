@@ -44,6 +44,8 @@ double	ft_atod(char *src)
 			pointer = 1;
 		else if (pointer && ft_isdigit(*src))
 			num = (*src - '0') * pow(0.1, i++) + num;
+		else
+			break ;
 		src++;
 	}
 	return (sign * num);
@@ -54,8 +56,14 @@ double *string_to_value(t_data *d, char *element, double l_limit, double h_limit
 	char **values;
 	double *value;
 	int i;
-
+	// write(2, element, ft_strlen(element));
+	// write(2, "\n", 1);
 	values = ft_split(element, ',');
+	// for(int i = 0; i < ft_sstrlen(values); i++)
+	// {
+	// 	write(2, values[i], ft_strlen(values[i]));
+	// 	write(2, "\n", 1);
+	// }
 	value = (double *)malloc(sizeof(double) * 3);
 	i = -1;
 	while (++i < 3)
@@ -170,10 +178,10 @@ void parsing_pl(char **element, t_data *d)
 	value = string_to_value(d, element[1], INF * -1, INF);
 	pl = (t_plane *)malloc(sizeof(t_plane));
 	pl->type = TYPE_P;
-	pl->point = make_xyz(value[0], value[2], value[3]);
+	pl->point = make_xyz(value[0], value[1], value[2]);
 	free(value);
 	value = string_to_value(d, element[2], -1.0, 1.0);
-	pl->normal = make_xyz(value[0], value[1], value[2]);
+	pl->normal = vec_unit(make_xyz(value[0], value[1], value[2]));
 	free(value);
 	value = string_to_value(d, element[3], 0, 255);
 	pl->ratio_reflect = divide_one(make_xyz(value[0], value[1], value[2]), 255);
