@@ -4,6 +4,8 @@ RM = rm -f
 
 LIBFT = libft.a
 LIBFT_DIR = libft
+GNL = gnl.a
+GNL_DIR = get-next-line
 
 NAME = minirt
 
@@ -12,14 +14,16 @@ INC = -I./incs
 SRCS = $(wildcard ./srcs/*.c)
 
 %.o: %.c
-	$(CC) -I. -I$(LIBFT_DIR) -c $< -o $@
+	$(CC) -I. -I $(LIBFT_DIR) $(GNL_DIR) -c $< -o $@
 
 OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
 	cp $(LIBFT_DIR)/$(LIBFT) .
-	$(CC) $(CFLAGS) $(OBJS) -L. -lft -o $@
+	$(MAKE) -C $(GNL_DIR)
+	cp $(GNL_DIR)/$(GNL) .
+	$(CC) $(CFLAGS) $(OBJS) -L. -lft $(GNL) -o $@
 
 all : $(NAME)
 

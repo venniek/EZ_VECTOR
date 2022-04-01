@@ -7,14 +7,16 @@
 # include "light.h"
 # include "utils.h"
 # include "libft.h"
-# include "gnl.h"
+# include "../get-next-line/get_next_line.h"
 
 void map_parsing(int ac, char **av, t_data *d);
 void parsing_data(char **element, t_data *d);
 void	parsing(char **av, t_data *d);
 
-void add_object(t_object *object, t_object *new);
-int *string_to_value(t_data *d, char *element, double l_limit, double h_limit);
+double	ft_atod(char *src);
+
+void add_object(t_data *d, t_object *new);
+double *string_to_value(t_data *d, char *element, double l_limit, double h_limit);
 void parsing_a(char **element, t_data *d);
 void parsing_c(char **element, t_data *d);
 void parsing_l(char **element, t_data *d);

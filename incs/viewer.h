@@ -38,6 +38,6 @@ typedef struct s_data
 	t_parsed parsed;
 }	t_data;
 
-t_viewer make_viewer(t_point position, t_vec dir, double fov);
+void make_viewer(t_data *d);
 
 #endif

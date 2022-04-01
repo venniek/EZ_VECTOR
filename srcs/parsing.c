@@ -23,21 +23,25 @@ void parsing_data(char **element, t_data *d)
 
 	type = ft_strdup(element[0]);
 	if (ft_strncmp(type, "A", 1) == 0 && ft_strlen(type) == 1)
-		return (parsing_a(element, d));
-	if (ft_strncmp(type, "C", 1) == 0 && ft_strlen(type) == 1)
-		return (parsing_c(element, d));
-	if (ft_strncmp(type, "L", 1) == 0 && ft_strlen(type) == 1)
-		return (parsing_l(element, d));
-	if (ft_strncmp(type, "sp", 2) == 0 && ft_strlen(type) == 2)
-		return (parsing_sp(element, d));
-	if (ft_strncmp(type, "pl", 2) == 0 && ft_strlen(type) == 2)
-		return (parsing_pl(element, d));
-	if (ft_strncmp(type, "cy", 2) == 0 && ft_strlen(type) == 2)
-		return (parsing_cy(element, d));
+		parsing_a(element, d);
+	else if (ft_strncmp(type, "C", 1) == 0 && ft_strlen(type) == 1)
+		parsing_c(element, d);
+	else if (ft_strncmp(type, "L", 1) == 0 && ft_strlen(type) == 1)
+		parsing_l(element, d);
+	else if (ft_strncmp(type, "sp", 2) == 0 && ft_strlen(type) == 2)
+		parsing_sp(element, d);
+	else if (ft_strncmp(type, "pl", 2) == 0 && ft_strlen(type) == 2)
+		parsing_pl(element, d);
+	else if (ft_strncmp(type, "cy", 2) == 0 && ft_strlen(type) == 2)
+		parsing_cy(element, d);
+	else
+	{
+		free(type);
+		free_sstr(element);
+		free_d(d);
+		error_and_exit("There's no matched type\n");
+	}
 	free(type);
-	free_sstr(element);
-	free_d(d);
-	error_and_exit("There's no matched type\n");
 }
 
 void	parsing(char **av, t_data *d)
@@ -57,11 +61,15 @@ void	parsing(char **av, t_data *d)
 	{
 		size = get_next_line(fd, &line);
 		element = ft_split(line, ' ');
-		parsing_data(element, d);
+		if (element[0])
+			parsing_data(element, d);
 		free(line);
-		line = 0;
+		free_sstr(element);
+		line = NULL;
 		if (size == 0)
 			break ;
 	}
+	if (line)
+		free(line);
 	close(fd);
 }

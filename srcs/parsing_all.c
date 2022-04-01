@@ -1,44 +1,81 @@
 #include "../incs/parsing.h"
 
-void add_object(t_object *object, t_object *new)
+void add_object(t_data *d, t_object *new)
 {
-	if (!object)
-		object = new;
+	t_object *iter;
+
+	if (!d->object)
+		d->object = new;
 	else
 	{
-		while (object->next != NULL)
-			object = object->next;
-		object->next = new;
+		iter = d->object;
+		while (iter->next != NULL)
+			iter = iter->next;
+		iter->next = new;
 	}
 }
 
-int *string_to_value(t_data *d, char *element, double l_limit, double h_limit)
+int	ft_isspace(int c)
+{
+	return (c == ' ' || c == '\n' || c == '\r'
+		|| c == '\v' || c == '\f' || c == '\t');
+}
+
+double	ft_atod(char *src)
+{
+	int			i;
+	int			sign;
+	double		num;
+	int			pointer;
+
+	i = 1;
+	sign = 1;
+	num = 0;
+	pointer = 0;
+	while (ft_isspace(*src))
+		src++;
+	while (*src)
+	{
+		if (*src == '-')
+			sign = -1;
+		else if (!pointer && ft_isdigit(*src))
+			num = (num * 10) + (*src - '0');
+		else if (*src == '.')
+			pointer = 1;
+		else if (pointer && ft_isdigit(*src))
+			num = (*src - '0') * pow(0.1, i++) + num;
+		src++;
+	}
+	return (sign * num);
+}
+
+double *string_to_value(t_data *d, char *element, double l_limit, double h_limit)
 {
 	char **values;
-	int *value;
+	double *value;
 	int i;
 
 	values = ft_split(element, ',');
-	value = (int *)malloc(sizeof(int) * 3);
+	value = (double *)malloc(sizeof(double) * 3);
 	i = -1;
 	while (++i < 3)
 	{
-		value[i] = ft_atoi(values[i]);
+		value[i] = ft_atod(values[i]);
 		if (!(value[i] >= l_limit && value[i] <= h_limit))
 		{
 			free(value);
-			free(values);
+			free_sstr(values);
 			free_d(d);
 			error_and_exit("Value is out of limits\n");
 		}
 	}
-	free(values);
+	free_sstr(values);
 	return (value);
 }
 
 void parsing_a(char **element, t_data *d)
 {
-	int *value;
+	double *value;
 	t_ambient *a;
 
 	if (d->parsed.ambient != 0)
@@ -47,7 +84,7 @@ void parsing_a(char **element, t_data *d)
 		error_and_exit("You need 2 properties\n");
 	d->parsed.ambient = 1;
 	a = &d->light.ambient;
-	a->ratio = ft_atoi(element[1]);
+	a->ratio = ft_atod(element[1]);
 	if (!(a->ratio >= 0.0 && a->ratio <= 1.0))
 		error_and_exit("Ambient lighting should be in range [0.0,1.0]\n");
 	value = string_to_value(d, element[2], 0, 255);
@@ -57,8 +94,8 @@ void parsing_a(char **element, t_data *d)
 
 void parsing_c(char **element, t_data *d)
 {
-	int *value;
-	int fov;
+	double *value;
+	double fov;
 	t_camera *c;
 
 	if (d->parsed.camera != 0)
@@ -72,7 +109,7 @@ void parsing_c(char **element, t_data *d)
 	free(value);
 	value = string_to_value(d, element[2], -1, 1);
 	c->uvec_direction = vec_unit(make_xyz(value[0], value[1], value[2]));
-	fov = ft_atoi(element[3]);
+	fov = ft_atod(element[3]);
 	if (!(fov >= 0 && fov <= 180))
 		error_and_exit("Camera's FOV should be in range [0,180]\n");
 	c->fol = (double) WIN_WIDTH / (2 * tan(PI * fov / 360));
@@ -81,7 +118,7 @@ void parsing_c(char **element, t_data *d)
 
 void parsing_l(char **element, t_data *d)
 {
-	int *value;
+	double *value;
 	double ratio;
 	t_light *l;
 
@@ -94,7 +131,7 @@ void parsing_l(char **element, t_data *d)
 	value = string_to_value(d, element[1], INF * -1, INF);
 	l->point = make_xyz(value[0], value[1], value[2]);
 	free(value);
-	ratio = ft_atoi(element[2]);
+	ratio = ft_atod(element[2]);
 	if (!(ratio >= 0.0 && ratio <= 1.0))
 		error_and_exit("Light brightness ratio should be in range [0.0,1.0]\n");
 	value = string_to_value(d, element[3], 0, 255);
@@ -106,7 +143,7 @@ void parsing_l(char **element, t_data *d)
 void parsing_sp(char **element, t_data *d)
 {
 	t_sphere *sp;
-	int *value;
+	double *value;
 
 	if (ft_sstrlen(element) != 4)
 		error_and_exit("You need 4 properties\n");
@@ -114,19 +151,19 @@ void parsing_sp(char **element, t_data *d)
 	sp = (t_sphere *)malloc(sizeof(t_sphere));
 	sp->type = TYPE_S;
 	sp->center = make_xyz(value[0], value[1], value[2]);
-	sp->r = ft_atoi(element[2]) / 2;
+	sp->r = ft_atod(element[2]) / 2;
 	free(value);
 	value = string_to_value(d, element[3], 0, 255);
 	sp->ratio_reflect = divide_one(make_rgb(value[0], value[1], value[2]), 255);
 	free(value);
 	sp->next = NULL;
-	add_object(d->object, (t_object *)sp);
+	add_object(d, (t_object *)sp);
 }
 
 void parsing_pl(char **element, t_data *d)
 {
 	t_plane *pl;
-	int *value;
+	double *value;
 
 	if (ft_sstrlen(element) != 4)
 		error_and_exit("You need 4 properties\n");
@@ -142,13 +179,14 @@ void parsing_pl(char **element, t_data *d)
 	pl->ratio_reflect = divide_one(make_xyz(value[0], value[1], value[2]), 255);
 	free(value);
 	pl->next = NULL;
-	add_object(d->object, (t_object *)pl);
+	add_object(d, (t_object *)pl);
+	pl->r = INF;
 }
 
 void parsing_cy(char **element, t_data *d)
 {
 	t_cylinder *cy;
-	int *value;
+	double *value;
 
 	if (ft_sstrlen(element) != 6)
 		error_and_exit("You need 6 properties\n");
@@ -157,14 +195,22 @@ void parsing_cy(char **element, t_data *d)
 	cy->type = TYPE_C;
 	cy->point = make_xyz(value[0], value[1], value[2]);
 	free(value);
-	value = string_to_value(d, element[2], -1.0, 1.0);
+	value = string_to_value(d, element[2], -1.0, 1.0); //!!!!
 	cy->normal = vec_unit(make_xyz(value[0], value[1], value[2]));
 	free(value);
-	cy->r = ft_atoi(element[3]) / 2;
-	cy->height = ft_atoi(element[4]);
+	cy->r = ft_atod(element[3]) / 2;
+	cy->height = ft_atod(element[4]);
 	value = string_to_value(d, element[5], 0, 255);
 	cy->ratio_reflect = divide_one(make_xyz(value[0], value[1], value[2]), 255);
 	free(value);
 	cy->next = NULL;
-	add_object(d->object, (t_object *)cy);
+	add_object(d, (t_object *)cy);
+	cy->down_cap.point = cy->point;
+	cy->down_cap.normal = cy->normal;
+	cy->down_cap.type = TYPE_P;
+	cy->down_cap.ratio_reflect = cy->ratio_reflect;
+	cy->down_cap.r = cy->r;
+	cy->down_cap.next = NULL;
+	cy->up_cap = cy->down_cap;
+	cy->up_cap.point = plus_value(cy->point, multi_one(cy->normal, cy->height));
 }

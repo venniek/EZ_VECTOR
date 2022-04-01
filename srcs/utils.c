@@ -14,8 +14,7 @@ void free_d(t_data *d)
 	while (d->object)
 	{
 		now = d->object;
-		while (now->next != NULL)
-			now = now->next;
+		d->object = d->object->next;
 		free(now);
 	}
 }

@@ -27,6 +27,7 @@ char	*ft_strjoin_2(char **s1, char *s2)
 	return (str);
 }
 
+
 int	ft_newline(const char *save)
 {
 	int			i;
@@ -88,23 +89,26 @@ int	read_done(char **line, char **save, int size)
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*save[OPEN_MAX];
+	static char	*save;
 	char		buf[BUFFER_SIZE + 1];
 	int			size;
 	int			index;
 
 	if (fd < 0 || line == 0 || BUFFER_SIZE <= 0)
 		return (-1);
-	if (!save[fd])
-		save[fd] = ft_strdup("");
-	size = read(fd, buf, BUFFER_SIZE);
-	while (size > 0)
+	*line = 0;
+	if (!save)
+		save = ft_strdup("");
+	while (1)
 	{
+		size = read(fd, buf, BUFFER_SIZE);
+		if (size <= 0)
+			break ;
 		buf[size] = '\0';
-		save[fd] = ft_strjoin_2(&save[fd], buf);
-		index = ft_newline(save[fd]);
+		save = ft_strjoin_2(&save, buf);
+		index = ft_newline(save);
 		if (index >= 0)
-			return (update_save(&save[fd], index, line));
+			return (update_save(&save, index, line));
 	}
-	return (read_done(line, &save[fd], size));
+	return (read_done(line, &save, size));
 }

@@ -49,9 +49,9 @@ t_hit   hit_cylinder(t_ray ray, t_cylinder *cylinder)
 		{
 			result.is_hit = FALSE;
 			if (vec_inner(ray.dir, cylinder->normal) > 0)
-				return hit_plane(ray, &cylinder->down_cap);
+				return (hit_plane(ray, &cylinder->down_cap));
 			else
-				return hit_plane(ray, &cylinder->up_cap);
+				return (hit_plane(ray, &cylinder->up_cap));
 		}
 		result.ratio_reflect = cylinder->ratio_reflect;
 		result.hit_normal = vec_unit(minus_value(cp, multi_one(cylinder->normal, vec_inner(cp, cylinder->normal))));
