@@ -107,8 +107,11 @@ t_hit hit_object(t_ray ray, t_object *objects, int is_shadow)
         {
             if (is_shadow == TRUE)
             {
-               if (tmp.t > 0.000001)
-                    return (tmp);
+				if (tmp.t >= 0.000001 && tmp.t < min_ret.t)
+				{
+					min_ret = tmp;
+					min_ret.index = idx;
+				}
             }
             else
             {

@@ -37,6 +37,6 @@ typedef struct s_light
 t_light make_light();
 void cal_diffuse(t_ray ray, t_hit hit, t_light *light);
 void cal_specular(t_ray ray, t_hit hit, t_light *light);
-void print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj);
+int print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj);
 
 #endif

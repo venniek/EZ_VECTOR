@@ -35,25 +35,35 @@ void cal_specular(t_ray ray, t_hit hit, t_light *light)
 	vec_reflect = vec_unit(minus_value(vec_light, multi_one(hit.hit_normal, 2 * vec_inner(vec_light, hit.hit_normal))));
 	cam_to_hit = vec_unit(minus_value(ray.source, hit.hit_point));
 	light->specular.ks = 0.5;
-	light->specular.n = 8;
+	light->specular.n = 16;
 	light->specular.spec = vec_inner(vec_reflect, cam_to_hit);
 	if (light->specular.spec < 0)
 		light->specular.spec = 0;
 }
 
-void print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj)
+//int make_ARGB(double r, double g, double b)
+//{
+//	int int_r;
+//	int int_b;
+//	int int_g;
+//
+//	int_r = r;
+//	int
+//}
+
+int print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj)
 {
 	t_rgb	color;
 	t_hit	hit_shadow;
 
 	if (hit.is_hit == TRUE)
 	{
-		if (hit.ratio_reflect.xr == 153/255)
-			;
 		cal_diffuse(ray, hit, light);
 		cal_specular(ray, hit, light);
 		hit_shadow = hit_object(make_ray(hit.hit_point, minus_value(light->point, hit.hit_point)), obj, TRUE);
-		if (hit_shadow.is_hit == TRUE && hit_shadow.t - vec_length(minus_value(hit.hit_point, light->point)) < 0.000001)
+		if (hit_shadow.is_hit == TRUE
+			&& (hit_shadow.t) - vec_length(minus_value(hit.hit_point, light->point)) < 0.000001
+		)
 		{
 			color.xr = light->ambient.color.xr * light->ambient.ratio;
 			color.yg = light->ambient.color.xr * light->ambient.ratio;
@@ -66,8 +76,12 @@ void print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj)
 			color.zb = light->ambient.color.zb * light->ambient.ratio + light->diffuse.kd * light->rgb.zb + light->specular.ks * pow(light->specular.spec, light->specular.n) * light->rgb.zb;
 			color = min_3value(color, make_rgb(255, 255, 255));
 		}
-		printf("%d %d %d\n", (int)(hit.ratio_reflect.xr * color.xr), (int)(hit.ratio_reflect.yg * color.yg), (int)(hit.ratio_reflect.zb * color.zb));
+		//printf("%d %d %d\n", (int)(hit.ratio_reflect.xr * color.xr), (int)(hit.ratio_reflect.yg * color.yg), (int)(hit.ratio_reflect.zb * color.zb));
+		return (((int)(hit.ratio_reflect.xr * color.xr) << 16) + ((int)(hit.ratio_reflect.yg * color.yg) << 8) + ((int)(hit.ratio_reflect.zb * color.zb)));
 	}
 	else
-		printf("%d %d %d\n", 0, 155, 250);
+	{
+		//printf("%d %d %d\n", 0, 155, 250);
+		return ((0 << 16) + (115 << 8) + (250));
+	}
 }
