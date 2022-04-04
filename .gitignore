@@ -1,3 +1,5 @@
 *.ppm
 *.out
 *.dSYM
+*.o
+minirt
