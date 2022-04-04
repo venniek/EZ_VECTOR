@@ -39,5 +39,6 @@ typedef struct s_data
 }	t_data;
 
 void make_viewer(t_data *d);
+t_vec get_newdirect(t_vec d, t_vec h, t_vec v, int type);
 
 #endif
