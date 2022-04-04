@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 19:26:37 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/04 19:28:16 by naykim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incs/parsing.h"
 
-void map_parsing(int ac, char **av, t_data *d)
+void	map_parsing(int ac, char **av, t_data *d)
 {
-	char *rt;
+	char	*rt;
 
 	if (ac != 2)
 		error_and_exit("You need only one argument\n");
@@ -17,9 +29,9 @@ void map_parsing(int ac, char **av, t_data *d)
 	parsing(av, d);
 }
 
-void parsing_data(char **element, t_data *d)
+void	parsing_data(char **element, t_data *d)
 {
-	char *type;
+	char	*type;
 
 	type = ft_strdup(element[0]);
 	if (ft_strncmp(type, "A", 1) == 0 && ft_strlen(type) == 1)
@@ -57,7 +69,8 @@ void	parsing(char **av, t_data *d)
 		write(2, "fail to open file\n", 18);
 		exit(1);
 	}
-	while (1)
+	size = -1;
+	while (size != 0)
 	{
 		size = get_next_line(fd, &line);
 		element = ft_split(line, ' ');
@@ -65,9 +78,6 @@ void	parsing(char **av, t_data *d)
 			parsing_data(element, d);
 		free(line);
 		free_sstr(element);
-		line = NULL;
-		if (size == 0)
-			break ;
 	}
 	if (line)
 		free(line);
