@@ -19,5 +19,4 @@
 # define TYPE_P 1
 # define TYPE_C 2
 
-
 # endif
