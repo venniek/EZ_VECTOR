@@ -1,8 +1,8 @@
 #include "../incs/parsing.h"
 
-void add_object(t_data *d, t_object *new)
+void	add_object(t_data *d, t_object *new)
 {
-	t_object *iter;
+	t_object	*iter;
 
 	if (!d->object)
 		d->object = new;
@@ -51,30 +51,24 @@ double	ft_atod(char *src)
 	return (sign * num);
 }
 
-double *string_to_value(t_data *d, char *element, double l_limit, double h_limit)
+double	*string_to_value(t_data *d, char *element, double low, double high)
 {
 	char **values;
 	double *value;
 	int i;
-	// write(2, element, ft_strlen(element));
-	// write(2, "\n", 1);
+
 	values = ft_split(element, ',');
-	// for(int i = 0; i < ft_sstrlen(values); i++)
-	// {
-	// 	write(2, values[i], ft_strlen(values[i]));
-	// 	write(2, "\n", 1);
-	// }
 	value = (double *)malloc(sizeof(double) * 3);
 	i = -1;
 	while (++i < 3)
 	{
 		value[i] = ft_atod(values[i]);
-		if (!(value[i] >= l_limit && value[i] <= h_limit))
+		if (!(value[i] >= low && value[i] <= high))
 		{
 			free(value);
 			free_sstr(values);
 			free_d(d);
-			error_and_exit("Value is out of limits\n");
+			error_and_exit("Value is out of limitss\n");
 		}
 	}
 	free_sstr(values);
