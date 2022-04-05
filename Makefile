@@ -14,22 +14,26 @@ MLX = libmlx.a
 GNL = gnl.a
 
 
-all : $(TARGET)
+all : submake $(TARGET)
 $(TARGET) : $(addprefix $(DIR_MAN), $(MAN)) \
 $(addprefix $(DIR_LIBFT), $(LIBFT)) \
 $(addprefix $(DIR_MLX), $(MLX)) \
 $(addprefix $(DIR_GNL), $(GNL))
 	$(GCC) $(FLAGS_MLX) -o $@ $^
-# %.o : %.c
-# 	$(GCC) $(FLAGS) -c -o $@ $^ -I $(DIR_HEARDER)
+
 $(addprefix $(DIR_MAN), $(MAN)) :
 	@make -C $(DIR_MAN) all;
 $(addprefix $(DIR_LIBFT), $(LIBFT)) : 
 	@make -C $(DIR_LIBFT) all;
-	@make -C $(DIR_LIBFT) bonus;
 $(addprefix $(DIR_MLX), $(MLX)) : 
 	@make -C $(DIR_MLX) all;
 $(addprefix $(DIR_GNL), $(GNL)) : 
+	@make -C $(DIR_GNL) all;
+
+submake :
+	@make -C $(DIR_MAN) all;
+	@make -C $(DIR_LIBFT) all;
+	@make -C $(DIR_MLX) all;
 	@make -C $(DIR_GNL) all;
 fclean : 
 	@make -C $(DIR_MAN) fclean;

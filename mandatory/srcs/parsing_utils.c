@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:19 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:20 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/05 17:31:31 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ double	*string_to_value(t_data *d, char *element, double low, double high)
 	int		i;
 
 	values = ft_split(element, ',');
-	value = (double *)malloc(sizeof(double) * 3);
+	if (ft_sstrlen(values) != 3)
+		error_and_exit("invalid format in rt file.\n");
+	value = (double *)ft_malloc(sizeof(double) * 3);
 	i = -1;
 	while (++i < 3)
 	{

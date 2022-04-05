@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:12:37 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 21:12:41 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/05 17:14:44 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_hit	hit_plane(t_ray ray, t_plane *plane)
 	t_hit	result;
 
 	result.is_hit = FALSE;
-	if (fabs(vec_inner(ray.dir, plane->normal)) <= 0.000001)
+	if (fabs(vec_inner(ray.dir, plane->normal)) <= EPSILON)
 		return (result);
 	result.t = vec_inner(minus_value(plane->point, ray.source), plane->normal)
 		/ vec_inner(plane->normal, ray.dir);
@@ -120,9 +120,9 @@ t_hit	hit_object(t_ray ray, t_object *objects, int is_shadow)
 			tmp = hit_cylinder(ray, (t_cylinder *)iter);
 		if (tmp.is_hit == TRUE)
 		{
-			if (is_shadow == TRUE && (tmp.t >= 0.000001 && tmp.t < min_ret.t))
+			if (is_shadow == TRUE && (tmp.t >= EPSILON && tmp.t < min_ret.t))
 				min_ret = tmp;
-			else if ((tmp.t >= 0.000001 && tmp.t < min_ret.t))
+			else if ((tmp.t >= EPSILON && tmp.t < min_ret.t))
 				min_ret = tmp;
 		iter = iter->next;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:00:33 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 12:00:34 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/05 17:32:05 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	error_and_exit(char *errstr);
 void	free_d(t_data *d);
 void	free_sstr(char **sstr);
 size_t	ft_sstrlen(char **sstr);
+void	*ft_malloc(size_t size);
 
 #endif

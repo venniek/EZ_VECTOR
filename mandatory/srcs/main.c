@@ -3,27 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:58:57 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:58:58 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/05 17:03:47 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/defines.h"
-#include "../incs/light.h"
-#include "../incs/object.h"
 #include "../incs/parsing.h"
-#include "../incs/ray.h"
 #include "../incs/three_value.h"
 #include "../incs/utils.h"
 #include "../incs/viewer.h"
 #include "../incs/mlx_rt.h"
 
-/*   +z
-**    |__+x
-** +y/
-*/
 void	init_d(t_data *d)
 {
 	d->object = NULL;

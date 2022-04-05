@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:20:26 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/04 22:04:37 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/05 14:56:11 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	parsing_l(char **element, t_data *d);
 void	parsing_sp(char **element, t_data *d);
 void	parsing_pl(char **element, t_data *d);
 void	parsing_cy(char **element, t_data *d);
-void	cap_in_cylinder(t_cylinder *cy);
+void	cap_in_cylinder(t_cylinder *cy, t_data *d);
 
 void	add_object(t_data *d, t_object *new);
 int		ft_isspace(int c);

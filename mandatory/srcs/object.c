@@ -6,18 +6,19 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:12:37 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 22:31:04 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/05 17:21:35 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/object.h"
+#include "../incs/defines.h"
 
 t_hit	hit_plane(t_ray ray, t_plane *plane)
 {
 	t_hit	result;
 
 	result.is_hit = FALSE;
-	if (fabs(vec_inner(ray.dir, plane->normal)) <= 0.000001)
+	if (fabs(vec_inner(ray.dir, plane->normal)) <= EPSILON)
 		return (result);
 	result.t = vec_inner(minus_value(plane->point, ray.source), plane->normal)
 		/ vec_inner(plane->normal, ray.dir);
@@ -26,7 +27,7 @@ t_hit	hit_plane(t_ray ray, t_plane *plane)
 		if (vec_length(minus_value(plane->point, result.hit_point)) > plane->r)
 			return (result);
 	result.is_hit = TRUE;
-	if (vec_inner(ray.dir, plane->normal) < 0)
+	if (vec_inner(ray.dir, plane->normal) < EPSILON)
 		result.hit_normal = plane->normal;
 	else
 		result.hit_normal = multi_one(plane->normal, -1);
@@ -34,44 +35,43 @@ t_hit	hit_plane(t_ray ray, t_plane *plane)
 	return (result);
 }
 
-t_hit	hit_cylinder_cap(t_ray ray, t_cylinder *cylinder, t_hit ret, t_vec cp)
+t_3value	cal_cylinder_abc(t_ray ray, t_cylinder *cylinder)
 {
-	if (vec_inner(cp, cylinder->normal) < 0
-		|| vec_inner(cp, cylinder->normal) > cylinder->height)
-	{
-		if (vec_inner(ray.dir, cylinder->normal) > 0)
-			return (hit_plane(ray, &cylinder->down_cap));
-		else
-			return (hit_plane(ray, &cylinder->up_cap));
-	}
-	return (ret);
+	t_3value	result;
+	t_vec		ce;
+
+	ce = minus_value(ray.source, cylinder->point);
+	result.xr = pow(vec_inner(ray.dir, cylinder->normal), 2) - 1;
+	result.yg = vec_inner(ray.dir, cylinder->normal)
+		* vec_inner(ce, cylinder->normal) - vec_inner(ce, ray.dir);
+	result.zb = pow(cylinder->r, 2) - vec_inner(ce, ce)
+		+ pow(vec_inner(ce, cylinder->normal), 2);
+	return (result);
 }
 
 t_hit	hit_cylinder(t_ray ray, t_cylinder *cylinder)
 {
 	t_hit		ret;
 	t_3value	abc;
-	t_vec		ce;
 	t_vec		cp;
 	double		det;
 
-	ce = minus_value(ray.source, cylinder->point);
-	abc.xr = pow(vec_inner(ray.dir, cylinder->normal), 2) - 1;
-	abc.yg = vec_inner(ray.dir, cylinder->normal)
-		* vec_inner(ce, cylinder->normal) - vec_inner(ce, ray.dir);
-	abc.zb = pow(cylinder->r, 2) - vec_inner(ce, ce)
-		+ pow(vec_inner(ce, cylinder->normal), 2);
+	abc = cal_cylinder_abc(ray, cylinder);
 	det = pow(abc.yg, 2) - abc.xr * abc.zb;
 	ret.is_hit = (det >= 0);
 	if (ret.is_hit == TRUE)
 	{
 		ret.t = (sqrt(det) - abc.yg) / abc.xr;
+		if (ret.t < EPSILON)
+			ret.t = - (abc.yg + sqrt(det)) / abc.xr;
 		ret.hit_point = plus_value(multi_one(ray.dir, ret.t), ray.source);
 		cp = minus_value(ret.hit_point, cylinder->point);
 		ret.ratio_reflect = cylinder->ratio_reflect;
 		ret.hit_normal = vec_unit(minus_value(cp, multi_one(cylinder->normal,
 						vec_inner(cp, cylinder->normal))));
-		ret = hit_cylinder_cap(ray, cylinder, ret, cp);
+		if (vec_inner(cp, cylinder->normal) < 0
+			|| vec_inner(cp, cylinder->normal) > cylinder->height)
+			ret.is_hit = FALSE;
 	}
 	return (ret);
 }
@@ -92,6 +92,8 @@ t_hit	hit_sphere(t_ray ray, t_sphere *sphere)
 	if (result.is_hit == TRUE)
 	{
 		result.t = -(abc.yg + sqrt(det)) / (2 * abc.xr);
+		if (result.t < EPSILON)
+			result.t = -(abc.yg - sqrt(det)) / (2 * abc.xr);
 		result.hit_point
 			= plus_value(multi_one(ray.dir, result.t), ray.source);
 		result.ratio_reflect = sphere->ratio_reflect;
@@ -120,9 +122,9 @@ t_hit	hit_object(t_ray ray, t_object *objects, int is_shadow)
 			tmp = hit_cylinder(ray, (t_cylinder *)iter);
 		if (tmp.is_hit == TRUE)
 		{
-			if (is_shadow == TRUE && (tmp.t >= 0.000001 && tmp.t < min_ret.t))
+			if (is_shadow == TRUE && (tmp.t >= EPSILON && tmp.t < min_ret.t))
 				min_ret = tmp;
-			else if ((tmp.t >= 0.000001 && tmp.t < min_ret.t))
+			else if ((tmp.t >= EPSILON && tmp.t < min_ret.t))
 				min_ret = tmp;
 		}
 		iter = iter->next;

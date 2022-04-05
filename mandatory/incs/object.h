@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:09 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 21:26:18 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/05 15:03:34 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ typedef struct s_cylinder
 	t_vec			normal;
 	double			r;
 	double			height;
-	t_plane			up_cap;
-	t_plane			down_cap;
 }	t_cylinder;
 
 typedef struct s_hit

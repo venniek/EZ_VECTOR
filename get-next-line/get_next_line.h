@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 17:41:48 by ygj               #+#    #+#             */
-/*   Updated: 2021/10/02 12:44:21 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/05 16:52:43 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_bufflst
 	ssize_t				leng;
 	short				is_eof;
 	struct s_bufflst	*next;
-}	t_bufflst;
+}				t_bufflst;
 
 int				get_next_line(int fd, char **line);
 void			cnt_nl(t_bufflst *lst);

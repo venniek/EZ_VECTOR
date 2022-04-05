@@ -34,7 +34,7 @@ void	make_shadow(t_hit hit, t_hit hit_shadow, t_light *light, t_rgb *color)
 {
 	if (hit_shadow.is_hit == TRUE
 		&& hit_shadow.t - vec_length(minus_value(hit.hit_point, light->point))
-		< 0.000001)
+		< EPSILON)
 	{
 		color->xr = light->ambient.color.xr * light->ambient.ratio;
 		color->yg = light->ambient.color.xr * light->ambient.ratio;

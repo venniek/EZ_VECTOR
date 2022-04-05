@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:41 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:41 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/05 17:31:45 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,14 @@ size_t	ft_sstrlen(char **sstr)
 	while (sstr[len])
 		len++;
 	return (len);
+}
+
+void	*ft_malloc(size_t size)
+{
+	void	*result;
+
+	result = malloc(size);
+	if (result == NULL)
+		error_and_exit("malloc error\n");
+	return (result);
 }

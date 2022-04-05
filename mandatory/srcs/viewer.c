@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   viewer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:11:49 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:48 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/05 18:27:52 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,22 @@ void	make_uvecs(t_data *data)
 
 	viewer = &data->viewer;
 	dir = viewer->camera.uvec_direction;
-	if (dir.xr == 0 && dir.yg == 0 && dir.zb == 1)
+	// // if (fabs(dir.xr) <= 0.000001 && fabs(dir.yg) <= 0.000001 && (fabs(dir.zb) - 1) <= 0.000001)
+	// if ((fabs(dir.zb) - 1) <= 0.000001)
+	// {
+	// 	viewer->uvec_horizon = vec_unit(vec_outer(dir, make_xyz(1, 0, 0)));
+	// 	viewer->uvec_vertical = vec_unit(vec_outer(viewer->uvec_horizon, dir));
+	// }
+	//if (fabs(dir.xr) <= 0.000001 && fabs(dir.yg) <= 0.000001 && fabs(dir.zb) - 1 <= 0.1)
+	if (fabs(fabs(dir.zb) - 1) <= 0.000001)
 	{
-		viewer->uvec_horizon
-			= vec_unit(vec_outer(dir, make_xyz(1, 0, 0)));
-		viewer->uvec_vertical = vec_unit(vec_outer(viewer->uvec_horizon, dir));
-	}
-	else if (dir.xr == 0 && dir.yg == 0 && dir.zb == -1)
-	{
+		printf("exception\n");
 		viewer->uvec_horizon = vec_unit(vec_outer(dir, make_xyz(1, 0, 0)));
 		viewer->uvec_vertical = vec_unit(vec_outer(viewer->uvec_horizon, dir));
 	}
 	else
 	{
+		printf("normal\n");
 		viewer->uvec_horizon = vec_unit(vec_outer(dir, make_xyz(0, 0, 1)));
 		viewer->uvec_vertical = vec_unit(vec_outer(viewer->uvec_horizon, dir));
 	}
