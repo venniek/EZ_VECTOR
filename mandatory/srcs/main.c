@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nayeon <nayeon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:58:57 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 19:59:09 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 02:34:51 by nayeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 {
 	t_data	d;
 	t_mlx	mlx;
-	
+
 	init_d(&d);
 	map_parsing(ac, av, &d);
 	make_viewer(&d);

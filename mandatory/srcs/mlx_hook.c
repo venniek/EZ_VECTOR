@@ -6,7 +6,7 @@
 /*   By: nayeon <nayeon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 02:29:36 by nayeon           ###   ########.fr       */
+/*   Updated: 2022/04/06 02:34:32 by nayeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	stop_tilt(int keycode, t_mlx *mlx)
 {
-	double det;
-	t_vec z;
-	t_vec dir;
+	double	det;
+	t_vec	z;
+	t_vec	dir;
 
 	z = make_xyz(0, 0, 1);
 	dir = mlx->data->viewer.camera.uvec_direction;
