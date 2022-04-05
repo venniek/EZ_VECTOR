@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nayeon <nayeon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:00 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 19:58:13 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 02:27:40 by nayeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
 t_vec	get_rvalue(int type)
 {
 	t_vec	ret;
-	double theta;
-
-	theta = THETA;
+	
 	ret.xr = cos(THETA);
 	ret.yg = 0;
 	ret.zb = 0;
