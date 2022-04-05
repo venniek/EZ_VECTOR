@@ -40,10 +40,11 @@ fclean :
 	@make -C $(DIR_LIBFT) fclean;
 	@make -C $(DIR_GNL) fclean;
 	@make -C $(DIR_MLX) clean;
+	rm -f $(TARGET)
 clean : 
 	@make -C $(DIR_MAN) clean;
 	@make -C $(DIR_LIBFT) clean;
 	@make -C $(DIR_MLX) clean;
 	@make -C $(DIR_GNL) clean;
-re : clean fclean all
+re : fclean all
 PHONY : all fclean clean re
