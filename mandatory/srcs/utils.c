@@ -6,12 +6,12 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:41 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:30:16 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 18:02:05 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <unistd.h>
-# include <stdlib.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include "../incs/utils.h"
 #include "../../libft/libft.h"
 

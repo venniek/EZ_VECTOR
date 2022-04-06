@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   matrix_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:00 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:16:13 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/three_value.h"
-#include "../incs/defines.h"
+#include "../incs/three_value_bonus.h"
+#include "../incs/defines_bonus.h"
 
 t_vec	get_rvalue(int type)
 {

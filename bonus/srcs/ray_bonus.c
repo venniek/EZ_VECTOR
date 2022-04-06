@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ray_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 12:00:23 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:37:33 by gyeon            ###   ########.fr       */
+/*   Created: 2022/04/04 21:12:05 by gyeon             #+#    #+#             */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_BONUS_H
-# define DEFINES_BONUS_H
+#include "../incs/ray_bonus.h"
 
-# define TRUE	1
-# define FALSE	0
+t_ray	make_ray(t_point source, t_vec dir)
+{
+	t_ray	ray;
 
-# define PI		3.14159265359
-# define THETA  0.0872664626
-# define EPSILON	0.000001
-# define R_UP       0
-# define R_DOWN     1
-# define R_RIGHT    2
-# define R_LEFT     3
-
-# define WIN_WIDTH	600
-# define WIN_HEIGHT	400
-# define INF 2147483647
-
-# define TYPE_S 0
-# define TYPE_P 1
-# define TYPE_C 2
-
-#endif
+	ray.source = source;
+	ray.dir = vec_unit(dir);
+	return (ray);
+}

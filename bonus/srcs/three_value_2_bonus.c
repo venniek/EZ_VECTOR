@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   three_value_2.c                                    :+:      :+:    :+:   */
+/*   three_value_2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:36 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:07:51 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/three_value.h"
-#include "../incs/utils.h"
+#include "../incs/three_value_bonus.h"
+#include "../incs/utils_bonus.h"
 
 t_3value	plus_value(t_3value value1, t_3value value2)
 {

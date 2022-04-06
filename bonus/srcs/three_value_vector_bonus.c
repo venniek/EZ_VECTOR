@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   three_value_vector.c                               :+:      :+:    :+:   */
+/*   three_value_vector_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:38 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:39 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/three_value.h"
+#include "../incs/three_value_bonus.h"
 
 double	vec_inner(t_3value value1, t_3value value2)
 {

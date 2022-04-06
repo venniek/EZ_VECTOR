@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   three_value_1.c                                    :+:      :+:    :+:   */
+/*   three_value_1_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:33 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:34 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/three_value.h"
+#include "../incs/three_value_bonus.h"
 
 t_3value	make_xyz(double x, double y, double z)
 {

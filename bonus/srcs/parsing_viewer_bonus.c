@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_viewer.c                                   :+:      :+:    :+:   */
+/*   parsing_viewer_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:24 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:25 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/parsing.h"
+#include "../incs/parsing_bonus.h"
 
 void	parsing_a(char **element, t_data *d)
 {

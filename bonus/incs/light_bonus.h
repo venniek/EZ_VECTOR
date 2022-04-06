@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.h                                            :+:      :+:    :+:   */
+/*   light_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:17:55 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:37:38 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIGHT_BONUS_H
 # define LIGHT_BONUS_H
 
-# include "ray.h"
-# include "object.h"
-# include "three_value.h"
+# include "ray_bonus.h"
+# include "object_bonus.h"
+# include "three_value_bonus.h"
 
 typedef struct s_ambient
 {

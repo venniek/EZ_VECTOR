@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.h                                           :+:      :+:    :+:   */
+/*   object_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:09 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:37:46 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_BONUS_H
 # define OBJECT_BONUS_H
 
-# include "three_value.h"
-# include "ray.h"
-# include "defines.h"
+# include "three_value_bonus.h"
+# include "ray_bonus.h"
+# include "defines_bonus.h"
 
 typedef struct s_object
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.c                                            :+:      :+:    :+:   */
+/*   light_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:58:50 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:18:33 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 18:17:21 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/light.h"
-#include "../incs/defines.h"
+#include "../incs/light_bonus.h"
+#include "../incs/defines_bonus.h"
 
 void	cal_diffuse(t_hit hit, t_light *light)
 {
@@ -36,8 +36,8 @@ void	cal_specular(t_ray ray, t_hit hit, t_light *light)
 				multi_one(hit.hit_normal,
 					2 * vec_inner(vec_light, hit.hit_normal))));
 	cam_to_hit = vec_unit(minus_value(ray.source, hit.hit_point));
-	light->specular.ks = 0.5;
-	light->specular.n = 16;
+	light->specular.ks = 0.6;
+	light->specular.n = 32;
 	light->specular.spec = vec_inner(vec_reflect, cam_to_hit);
 	if (light->specular.spec < 0)
 		light->specular.spec = 0;

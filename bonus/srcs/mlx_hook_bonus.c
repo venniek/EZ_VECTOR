@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_hook.c                                         :+:      :+:    :+:   */
+/*   mlx_hook_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:31:57 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../incs/mlx_rt.h"
-#include "../incs/defines.h"
-#include "../incs/three_value.h"
-#include "../incs/utils.h"
+#include "../incs/mlx_rt_bonus.h"
+#include "../incs/defines_bonus.h"
+#include "../incs/three_value_bonus.h"
+#include "../incs/utils_bonus.h"
 
 int	stop_tilt(int keycode, t_mlx *mlx)
 {

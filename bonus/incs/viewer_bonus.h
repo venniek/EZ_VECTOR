@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   viewer.h                                           :+:      :+:    :+:   */
+/*   viewer_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:25 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:39:16 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIEWER_BONUS_H
 # define VIEWER_BONUS_H
 
-# include "three_value.h"
-# include "defines.h"
-# include "ray.h"
-# include "light.h"
-# include "object.h"
+# include "three_value_bonus.h"
+# include "defines_bonus.h"
+# include "ray_bonus.h"
+# include "light_bonus.h"
+# include "object_bonus.h"
 
 typedef struct s_camera
 {

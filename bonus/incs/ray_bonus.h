@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   ray_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 21:12:05 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 21:13:44 by gyeon            ###   ########.fr       */
+/*   Created: 2022/04/04 21:18:19 by gyeon             #+#    #+#             */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/ray.h"
+#ifndef RAY_BONUS_H
+# define RAY_BONUS_H
 
-t_ray	make_ray(t_point source, t_vec dir)
+# include "three_value_bonus.h"
+
+typedef struct s_ray
 {
-	t_ray	ray;
+	t_point	source;
+	t_vec	dir;
+}	t_ray;
 
-	ray.source = source;
-	ray.dir = vec_unit(dir);
-	return (ray);
-}
+t_ray	make_ray(t_point source, t_vec dir);
+
+#endif

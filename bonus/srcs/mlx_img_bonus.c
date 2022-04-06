@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_img.c                                          :+:      :+:    :+:   */
+/*   mlx_img_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:22:41 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/mlx_rt.h"
-#include "../incs/defines.h"
+#include "../incs/mlx_rt_bonus.h"
+#include "../incs/defines_bonus.h"
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {

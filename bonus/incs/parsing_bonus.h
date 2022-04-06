@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parsing_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:20:26 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:41:26 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:48:05 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_BONUS_H
 # define PARSING_BONUS_H
 
-# include "viewer.h"
-# include "object.h"
-# include "light.h"
-# include "utils.h"
+# include "viewer_bonus.h"
+# include "object_bonus.h"
+# include "light_bonus.h"
+# include "utils_bonus.h"
 # include "../../libft/libft.h"
 # include "../../get-next-line/get_next_line.h"
 
