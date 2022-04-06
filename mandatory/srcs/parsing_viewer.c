@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_viewer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:24 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 11:59:25 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/06 19:21:39 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	parsing_l(char **element, t_data *d)
 
 	if (d->parsed.light != 0)
 		error_and_exit("Too many light\n");
-	if (ft_sstrlen(element) != 4)
-		error_and_exit("You need 4 properties\n");
+	if (ft_sstrlen(element) != 3)
+		error_and_exit("You need 3 properties\n");
 	d->parsed.light = 1;
 	l = &d->light;
 	value = string_to_value(d, element[1], INF * -1, INF);
@@ -73,8 +73,6 @@ void	parsing_l(char **element, t_data *d)
 	ratio = ft_atod(element[2]);
 	if (!(ratio >= 0.0 && ratio <= 1.0))
 		error_and_exit("Light brightness ratio should be in range [0.0,1.0]\n");
-	value = string_to_value(d, element[3], 0, 255);
-	l->rgb = make_rgb(value[0], value[1], value[2]);
+	l->rgb = make_rgb(255, 255, 255);
 	l->rgb = multi_one(l->rgb, ratio);
-	free(value);
 }

@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:58:50 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 18:12:17 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 19:25:43 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,17 @@ void	cal_pixel_color(
 		< EPSILON)
 	{
 		color->xr = light->ambient.color.xr * light->ambient.ratio;
-		color->yg = light->ambient.color.xr * light->ambient.ratio;
-		color->zb = light->ambient.color.xr * light->ambient.ratio;
+		color->yg = light->ambient.color.yg * light->ambient.ratio;
+		color->zb = light->ambient.color.zb * light->ambient.ratio;
 	}
 	else
 	{
 		color->xr = light->ambient.color.xr * light->ambient.ratio
 			+ light->diffuse.kd * light->rgb.xr;
-			//+ light->specular.ks;
-			//* pow(light->specular.spec, light->specular.n) * light->rgb.xr;
 		color->yg = light->ambient.color.yg * light->ambient.ratio
 			+ light->diffuse.kd * light->rgb.yg;
-			//+ light->specular.ks;
-			//* pow(light->specular.spec, light->specular.n) * light->rgb.yg;
 		color->zb = light->ambient.color.zb * light->ambient.ratio
 			+ light->diffuse.kd * light->rgb.zb;
-			//+ light->specular.ks;
-			//* pow(light->specular.spec, light->specular.n) * light->rgb.zb;
 		*color = min_3value(*color, make_rgb(255, 255, 255));
 	}	
 }

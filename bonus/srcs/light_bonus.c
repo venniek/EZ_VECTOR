@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:58:50 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 18:17:21 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 19:26:07 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	cal_pixel_color(
 		< EPSILON)
 	{
 		color->xr = light->ambient.color.xr * light->ambient.ratio;
-		color->yg = light->ambient.color.xr * light->ambient.ratio;
-		color->zb = light->ambient.color.xr * light->ambient.ratio;
+		color->yg = light->ambient.color.yg * light->ambient.ratio;
+		color->zb = light->ambient.color.zb * light->ambient.ratio;
 	}
 	else
 	{
