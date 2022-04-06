@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   three_value_vector.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 11:59:38 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/05 11:59:39 by naykim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incs/three_value.h"
 
 double	vec_inner(t_3value value1, t_3value value2)
 {
 	double	d;
 
-	d = value1.xr * value2.xr + value1.yg * value2.yg + value1.zb * value2.zb);
+	d = value1.xr * value2.xr + value1.yg * value2.yg + value1.zb * value2.zb;
 	return (d);
 }
 

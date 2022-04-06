@@ -1,5 +1,17 @@
-#ifndef THREE_VALUE_H
-# define THREE_VALUE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   three_value.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 12:00:30 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/06 17:39:04 by gyeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef THREE_VALUE_BONUS_H
+# define THREE_VALUE_BONUS_H
 
 # include <math.h>
 # include <unistd.h>

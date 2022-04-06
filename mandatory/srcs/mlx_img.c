@@ -6,11 +6,12 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 14:50:48 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:22:41 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/mlx_rt.h"
+#include "../incs/defines.h"
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {

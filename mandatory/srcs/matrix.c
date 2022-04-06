@@ -6,14 +6,12 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:00 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 14:02:11 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:16:13 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/three_value.h"
 #include "../incs/defines.h"
-
-#include  <stdio.h>
 
 t_vec	get_rvalue(int type)
 {

@@ -6,12 +6,12 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:25 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 21:23:28 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:39:16 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIEWER_H
-# define VIEWER_H
+#ifndef VIEWER_BONUS_H
+# define VIEWER_BONUS_H
 
 # include "three_value.h"
 # include "defines.h"
@@ -50,6 +50,7 @@ typedef struct s_data
 	t_parsed	parsed;
 }	t_data;
 
+void	make_uvecs(t_data *d);
 void	make_viewer(t_data *d);
 t_vec	get_newdirect(t_vec d, t_vec h, t_vec v, int type);
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   three_value_2.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 11:59:36 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/06 17:07:51 by gyeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incs/three_value.h"
 #include "../incs/utils.h"
 
@@ -36,7 +48,7 @@ t_3value	multi_3value(t_3value value1, t_3value value2)
 t_3value	divide_one(t_3value value, double t)
 {
 	if (t < EPSILON && t > -EPSILON)
-		error_and_exit ("divide by zero\n");
+		error_and_exit("divide by zero\n");
 	value.xr /= t;
 	value.yg /= t;
 	value.zb /= t;

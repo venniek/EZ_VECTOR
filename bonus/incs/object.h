@@ -6,14 +6,13 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:09 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 21:26:18 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:37:46 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OBJECT_H
-# define OBJECT_H
+#ifndef OBJECT_BONUS_H
+# define OBJECT_BONUS_H
 
-# include <stdlib.h>
 # include "three_value.h"
 # include "ray.h"
 # include "defines.h"
@@ -53,8 +52,6 @@ typedef struct s_cylinder
 	t_vec			normal;
 	double			r;
 	double			height;
-	t_plane			up_cap;
-	t_plane			down_cap;
 }	t_cylinder;
 
 typedef struct s_hit

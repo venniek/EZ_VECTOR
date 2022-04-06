@@ -6,11 +6,14 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:26:37 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/04 20:30:27 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:31:12 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/parsing.h"
+#include <fcntl.h>
+#include <errno.h>
+#include <string.h>
 
 void	map_parsing(int ac, char **av, t_data *d)
 {
@@ -18,6 +21,8 @@ void	map_parsing(int ac, char **av, t_data *d)
 
 	if (ac != 2)
 		error_and_exit("You need only one argument\n");
+	if (ft_strlen(av[1]) < 3)
+		error_and_exit("rt file - wrong format\n");
 	rt = ft_substr(av[1], ft_strlen(av[1]) - 3, 3);
 	if (ft_strncmp(rt, ".rt", 3))
 	{
@@ -27,6 +32,8 @@ void	map_parsing(int ac, char **av, t_data *d)
 	}
 	free(rt);
 	parsing(av, d);
+	if (d->parsed.ambient + d->parsed.camera + d->parsed.light < 3)
+		error_and_exit("rt file - wrong format\n");
 }
 
 void	parsing(char **av, t_data *d)
@@ -38,14 +45,13 @@ void	parsing(char **av, t_data *d)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-	{
-		write(2, "fail to open file\n", 18);
-		exit(1);
-	}
+		error_and_exit("fail to open file\n");
 	size = -1;
 	while (size != 0)
 	{
 		size = get_next_line(fd, &line);
+		if (size == -1)
+			error_and_exit(strerror(errno));
 		element = ft_split(line, ' ');
 		if (element[0])
 			parsing_all(element, d);

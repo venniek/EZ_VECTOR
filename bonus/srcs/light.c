@@ -1,6 +1,19 @@
-#include "../incs/light.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   light.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 11:58:50 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/06 17:18:33 by gyeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	cal_diffuse(t_ray ray, t_hit hit, t_light *light)
+#include "../incs/light.h"
+#include "../incs/defines.h"
+
+void	cal_diffuse(t_hit hit, t_light *light)
 {
 	t_vec	normal;
 	t_vec	hit_to_light;
@@ -30,7 +43,8 @@ void	cal_specular(t_ray ray, t_hit hit, t_light *light)
 		light->specular.spec = 0;
 }
 
-void	make_shadow(t_hit hit, t_hit hit_shadow, t_light *light, t_rgb *color)
+void	cal_pixel_color(
+	t_hit hit, t_hit hit_shadow, t_light *light, t_rgb *color)
 {
 	if (hit_shadow.is_hit == TRUE
 		&& hit_shadow.t - vec_length(minus_value(hit.hit_point, light->point))
@@ -58,18 +72,18 @@ void	make_shadow(t_hit hit, t_hit hit_shadow, t_light *light, t_rgb *color)
 	}	
 }
 
-int	print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj)
+int	get_argb(t_ray ray, t_hit hit, t_light *light, t_object *obj)
 {
 	t_rgb	color;
 	t_hit	hit_shadow;
 
 	if (hit.is_hit == TRUE)
 	{
-		cal_diffuse(ray, hit, light);
+		cal_diffuse(hit, light);
 		cal_specular(ray, hit, light);
 		hit_shadow = hit_object(make_ray(hit.hit_point,
 					minus_value(light->point, hit.hit_point)), obj, TRUE);
-		make_shadow(hit, hit_shadow, light, &color);
+		cal_pixel_color(hit, hit_shadow, light, &color);
 		return (((int)(hit.ratio_reflect.xr * color.xr) << 16)
 			+ ((int)(hit.ratio_reflect.yg * color.yg) << 8)
 			+ ((int)(hit.ratio_reflect.zb * color.zb)));

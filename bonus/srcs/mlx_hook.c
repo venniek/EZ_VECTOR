@@ -6,11 +6,34 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 20:40:50 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:31:57 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../incs/mlx_rt.h"
+#include "../incs/defines.h"
+#include "../incs/three_value.h"
+#include "../incs/utils.h"
+
+int	stop_tilt(int keycode, t_mlx *mlx)
+{
+	double	det;
+	t_vec	z;
+	t_vec	dir;
+
+	z = make_xyz(0, 0, 1);
+	dir = mlx->data->viewer.camera.uvec_direction;
+	det = vec_inner(z, dir);
+	if (fabs(det) > cos(2 * THETA))
+	{
+		if (keycode == 13 && dir.zb > EPSILON)
+			return (TRUE);
+		if (keycode == 1 && dir.zb < EPSILON)
+			return (TRUE);
+	}
+	return (FALSE);
+}
 
 void	key_arrow(int keycode, t_mlx *mlx)
 {
@@ -57,6 +80,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 	{
 		mlx_destroy_image(mlx->mlx, mlx->img);
 		mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+		free_d(mlx->data);
 		exit(0);
 	}
 	else if (keycode >= 123 && keycode <= 126)
@@ -67,6 +91,8 @@ int	key_hook(int keycode, t_mlx *mlx)
 	}
 	else if ((keycode >= 0 && keycode <= 2) || keycode == 13)
 	{
+		if ((keycode == 13 || keycode == 1) && stop_tilt(keycode, mlx))
+			return (mlx_warning(mlx));
 		key_wasd(keycode, mlx);
 		make_viewer(mlx->data);
 		make_mlx_img(mlx->data, mlx);
@@ -79,6 +105,7 @@ int	ft_click(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+	free_d(mlx->data);
 	exit(0);
 	return (0);
 }

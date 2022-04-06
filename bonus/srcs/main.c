@@ -1,17 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 11:58:57 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/06 14:02:09 by gyeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incs/defines.h"
-#include "../incs/light.h"
-#include "../incs/object.h"
 #include "../incs/parsing.h"
-#include "../incs/ray.h"
 #include "../incs/three_value.h"
 #include "../incs/utils.h"
 #include "../incs/viewer.h"
 #include "../incs/mlx_rt.h"
 
-/*   +z
-**    |__+x
-** +y/
-*/
 void	init_d(t_data *d)
 {
 	d->object = NULL;
@@ -22,8 +27,6 @@ void	init_d(t_data *d)
 
 int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
 	t_data	d;
 	t_mlx	mlx;
 

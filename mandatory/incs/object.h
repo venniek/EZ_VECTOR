@@ -6,14 +6,13 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:09 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/05 15:03:34 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:31:30 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
 
-# include <stdlib.h>
 # include "three_value.h"
 # include "ray.h"
 # include "defines.h"

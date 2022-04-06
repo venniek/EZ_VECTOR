@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:17:55 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/05 17:20:37 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:33:18 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "ray.h"
 # include "object.h"
 # include "three_value.h"
-# include <stdio.h>
 
 typedef struct s_ambient
 {

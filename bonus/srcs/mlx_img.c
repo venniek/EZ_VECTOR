@@ -6,11 +6,12 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 20:42:12 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:22:41 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/mlx_rt.h"
+#include "../incs/defines.h"
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {
@@ -39,7 +40,17 @@ void	make_mlx_img(t_data *d, t_mlx *mlx)
 							multi_one(d->viewer.uvec_vertical, -i))));
 			result = hit_object(view_ray, (t_object *)d->object, FALSE);
 			my_mlx_pixel_put(mlx, j, i,
-				print_color(view_ray, result, &d->light, d->object));
+				get_argb(view_ray, result, &d->light, d->object));
 		}
 	}
+}
+
+int	mlx_warning(t_mlx *mlx)
+{
+	if (WIN_WIDTH < 160 || WIN_HEIGHT < 80)
+		return (0);
+	mlx_string_put(mlx->mlx, mlx->mlx_win,
+		WIN_WIDTH / 2 - 80, WIN_HEIGHT / 2,
+		0x00FF3232, "Can't rotate any more!");
+	return (0);
 }

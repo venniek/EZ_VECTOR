@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   viewer.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:25 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/05 12:00:37 by naykim           ###   ########.fr       */
+/*   Updated: 2022/04/06 17:27:58 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_data
 	t_parsed	parsed;
 }	t_data;
 
+void	make_uvecs(t_data *d);
 void	make_viewer(t_data *d);
 t_vec	get_newdirect(t_vec d, t_vec h, t_vec v, int type);
 

@@ -6,10 +6,11 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:12:37 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/05 17:21:35 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:31:38 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../incs/object.h"
 #include "../incs/defines.h"
 

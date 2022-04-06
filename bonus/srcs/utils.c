@@ -1,4 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 11:59:41 by naykim            #+#    #+#             */
+/*   Updated: 2022/04/06 17:30:16 by gyeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include <unistd.h>
+# include <stdlib.h>
 #include "../incs/utils.h"
+#include "../../libft/libft.h"
 
 void	error_and_exit(char *errstr)
 {
@@ -42,7 +57,19 @@ size_t	ft_sstrlen(char **sstr)
 	size_t	len;
 
 	len = 0;
+	if (!sstr)
+		error_and_exit("sstr is null pointer\n");
 	while (sstr[len])
 		len++;
 	return (len);
+}
+
+void	*ft_malloc(size_t size)
+{
+	void	*result;
+
+	result = malloc(size);
+	if (result == NULL)
+		error_and_exit("malloc error\n");
+	return (result);
 }

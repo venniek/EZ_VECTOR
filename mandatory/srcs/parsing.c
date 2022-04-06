@@ -6,11 +6,12 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:26:37 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 14:21:50 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:31:12 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/parsing.h"
+#include <fcntl.h>
 #include <errno.h>
 #include <string.h>
 

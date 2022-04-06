@@ -6,15 +6,15 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 22:03:36 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 11:13:12 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:33:01 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_RT_H
 # define MLX_RT_H
 
-# include "parsing.h"
 # include "../../minilibx_opengl_20191021/mlx.h"
+# include "viewer.h"
 
 typedef struct s_mlx
 {

@@ -6,17 +6,16 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:17:55 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/04 21:20:16 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:37:38 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_H
-# define LIGHT_H
+#ifndef LIGHT_BONUS_H
+# define LIGHT_BONUS_H
 
 # include "ray.h"
 # include "object.h"
 # include "three_value.h"
-# include <stdio.h>
 
 typedef struct s_ambient
 {
@@ -46,9 +45,10 @@ typedef struct s_light
 	struct s_light	*next;
 }	t_light;
 
-void	cal_diffuse(t_ray ray, t_hit hit, t_light *light);
+void	cal_diffuse(t_hit hit, t_light *light);
 void	cal_specular(t_ray ray, t_hit hit, t_light *light);
-int		print_color(t_ray ray, t_hit hit, t_light *light, t_object *obj);
-void	make_shadow(t_hit hit, t_hit hit_shadow, t_light *light, t_rgb *color);
+void	cal_pixel_color(t_hit hit,
+			t_hit hit_shadow, t_light *light, t_rgb *color);
+int		get_argb(t_ray ray, t_hit hit, t_light *light, t_object *obj);
 
 #endif

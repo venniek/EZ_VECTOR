@@ -6,14 +6,13 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:20:26 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 14:56:11 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:30:45 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include <fcntl.h>
 # include "viewer.h"
 # include "object.h"
 # include "light.h"
