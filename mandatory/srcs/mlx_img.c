@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/05 16:59:45 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 14:50:48 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,14 @@ void	make_mlx_img(t_data *d, t_mlx *mlx)
 				get_argb(view_ray, result, &d->light, d->object));
 		}
 	}
+}
+
+int	mlx_warning(t_mlx *mlx)
+{
+	if (WIN_WIDTH < 160 || WIN_HEIGHT < 80)
+		return (0);
+	mlx_string_put(mlx->mlx, mlx->mlx_win,
+		WIN_WIDTH / 2 - 80, WIN_HEIGHT / 2,
+		0x00FF3232, "Can't rotate any more!");
+	return (0);
 }

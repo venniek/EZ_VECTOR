@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_rt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nayeon <nayeon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 22:03:36 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 02:33:49 by nayeon           ###   ########.fr       */
+/*   Updated: 2022/04/06 11:13:12 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_mlx
 
 int		stop_tilt(int keycode, t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int		mlx_warning(t_mlx *mlx);
 void	make_mlx_img(t_data *d, t_mlx *mlx);
 int		key_hook(int keycode, t_mlx *mlx);
 int		ft_click(t_mlx *mlx);

@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:19 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 17:31:31 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 14:47:53 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ double	ft_atod(char *src)
 		else if (flag[1] && ft_isdigit(*src))
 			num += (*src - '0') * pow(0.1, i++);
 		else
-			break ;
+			error_and_exit("invalid format in rt file.\n");
 		src++;
 	}
 	return (flag[0] * num);

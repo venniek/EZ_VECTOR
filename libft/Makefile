@@ -6,7 +6,7 @@
 #    By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 12:09:55 by naykim            #+#    #+#              #
-#    Updated: 2022/04/05 16:45:44 by gyeon            ###   ########.fr        #
+#    Updated: 2022/04/06 15:05:40 by gyeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,19 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c 
 
 OBJS = $(SRCS:.c=.o)
 
+all: $(NAME)
+
 %.o: %.c
-	$(CC) $(CFLAGS) -c $(SRCS) $(SRCS_B)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 $(NAME) : $(OBJS)
 	$(AR) $@ $(OBJS)
 
-all: $(NAME)
-
 clean:
-	rm -f $(OBJS) $(OBJS_B)
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME) $(OBJS_B)
+	rm -f $(NAME)
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nayeon <nayeon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:37:13 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 02:34:32 by nayeon           ###   ########.fr       */
+/*   Updated: 2022/04/06 14:49:26 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	stop_tilt(int keycode, t_mlx *mlx)
 	z = make_xyz(0, 0, 1);
 	dir = mlx->data->viewer.camera.uvec_direction;
 	det = vec_inner(z, dir);
-	if (fabs(det) > cos(THETA))
+	if (fabs(det) > cos(2 * THETA))
 	{
 		if (keycode == 13 && dir.zb > EPSILON)
 			return (TRUE);
@@ -76,6 +76,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 	{
 		mlx_destroy_image(mlx->mlx, mlx->img);
 		mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+		free_d(mlx->data);
 		exit(0);
 	}
 	else if (keycode >= 123 && keycode <= 126)
@@ -87,7 +88,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 	else if ((keycode >= 0 && keycode <= 2) || keycode == 13)
 	{
 		if ((keycode == 13 || keycode == 1) && stop_tilt(keycode, mlx))
-			return (0);
+			return (mlx_warning(mlx));
 		key_wasd(keycode, mlx);
 		make_viewer(mlx->data);
 		make_mlx_img(mlx->data, mlx);
@@ -100,6 +101,7 @@ int	ft_click(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+	free_d(mlx->data);
 	exit(0);
 	return (0);
 }

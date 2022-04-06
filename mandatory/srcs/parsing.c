@@ -6,11 +6,13 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:26:37 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/04 22:16:56 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 14:21:50 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/parsing.h"
+#include <errno.h>
+#include <string.h>
 
 void	map_parsing(int ac, char **av, t_data *d)
 {
@@ -18,6 +20,8 @@ void	map_parsing(int ac, char **av, t_data *d)
 
 	if (ac != 2)
 		error_and_exit("You need only one argument\n");
+	if (ft_strlen(av[1]) < 3)
+		error_and_exit("rt file - wrong format\n");
 	rt = ft_substr(av[1], ft_strlen(av[1]) - 3, 3);
 	if (ft_strncmp(rt, ".rt", 3))
 	{
@@ -27,6 +31,8 @@ void	map_parsing(int ac, char **av, t_data *d)
 	}
 	free(rt);
 	parsing(av, d);
+	if (d->parsed.ambient + d->parsed.camera + d->parsed.light < 3)
+		error_and_exit("rt file - wrong format\n");
 }
 
 void	parsing(char **av, t_data *d)
@@ -43,6 +49,8 @@ void	parsing(char **av, t_data *d)
 	while (size != 0)
 	{
 		size = get_next_line(fd, &line);
+		if (size == -1)
+			error_and_exit(strerror(errno));
 		element = ft_split(line, ' ');
 		if (element[0])
 			parsing_all(element, d);

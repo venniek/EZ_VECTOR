@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: naykim <naykim@student.42.fr>              +#+  +:+       +#+         #
+#    By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 11:59:54 by naykim            #+#    #+#              #
-#    Updated: 2022/04/05 12:00:24 by naykim           ###   ########.fr        #
+#    Updated: 2022/04/06 14:13:49 by gyeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ all : $(TARGET)
 $(TARGET) : $(addprefix $(DIR_SRCS), $(OBJS))
 	ar rcs $@ $^
 %.o : %.c
-	$(GCC) $(FLAGS) -c -o $@ $^ -I $(DIR_HEADER)
+	$(GCC) $(FLAGS) -c -o $@ $^ -I $(DIR_HEADER) -g
 
 fclean : clean
 	@rm -rf $(TARGET);

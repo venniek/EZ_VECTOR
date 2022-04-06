@@ -6,7 +6,7 @@
 #    By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/02 13:27:37 by gyeon             #+#    #+#              #
-#    Updated: 2022/04/05 16:53:44 by gyeon            ###   ########.fr        #
+#    Updated: 2022/04/06 15:15:44 by gyeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ $(TARGET) : $(OBJ)
 %.o : %.c
 	$(GCC) -c $(FLAGS) -I $(HEADER) -o $@ $< 
 clean :
-	rm -rf $(OBJ)
+	rm -f $(OBJ)
 fclean : clean
-	rm -rf $(TARGET)
+	rm -f $(TARGET)
 re : clean fclean all
 .PHONY : all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:00:23 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 17:53:01 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 14:52:04 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define R_RIGHT    2
 # define R_LEFT     3
 
-# define WIN_WIDTH	500
-# define WIN_HEIGHT	400
+# define WIN_WIDTH	1600
+# define WIN_HEIGHT	900
 # define INF 2147483647
 
 # define TYPE_S 0
