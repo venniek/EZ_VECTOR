@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:19 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 14:47:53 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:04:50 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ double	ft_atod(char *src)
 	flag[1] = 0;
 	while (ft_isspace(*src))
 		src++;
+	if (*src == '-')
+		flag[0] = *(src++) - 46;
 	while (*src)
 	{
-		if (*src == '-' && flag[0] == 1)
-			flag[0] = -1;
-		else if (!flag[1] && ft_isdigit(*src))
+		if (!flag[1] && ft_isdigit(*src))
 			num = num * 10 + (*src - '0');
-		else if (*src == '.')
+		else if (*src == '.' && flag[1] == 0)
 			flag[1] = 1;
 		else if (flag[1] && ft_isdigit(*src))
 			num += (*src - '0') * pow(0.1, i++);

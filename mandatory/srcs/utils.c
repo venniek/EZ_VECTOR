@@ -6,7 +6,7 @@
 /*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:41 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 11:10:54 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:08:38 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ size_t	ft_sstrlen(char **sstr)
 	size_t	len;
 
 	len = 0;
+	if (!sstr)
+		error_and_exit("sstr is null pointer\n");
 	while (sstr[len])
 		len++;
 	return (len);
