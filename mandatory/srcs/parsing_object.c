@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:17 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/05 17:31:31 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 18:12:21 by naykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	parsing_sp(char **element, t_data *d)
 	double		*value;
 
 	if (ft_sstrlen(element) != 4)
-		error_and_exit("You need 4 properties\n");
+		error_and_exit("You need 3 properties\n");
 	value = string_to_value(d, element[1], INF * -1, INF);
 	sp = (t_sphere *)ft_malloc(sizeof(t_sphere));
 	sp->type = TYPE_S;
@@ -38,7 +38,7 @@ void	parsing_pl(char **element, t_data *d)
 	double	*value;
 
 	if (ft_sstrlen(element) != 4)
-		error_and_exit("You need 4 properties\n");
+		error_and_exit("You need 3 properties\n");
 	value = string_to_value(d, element[1], INF * -1, INF);
 	pl = (t_plane *)ft_malloc(sizeof(t_plane));
 	pl->type = TYPE_P;
@@ -61,7 +61,7 @@ void	parsing_cy(char **element, t_data *d)
 	double		*value;
 
 	if (ft_sstrlen(element) != 6)
-		error_and_exit("You need 6 properties\n");
+		error_and_exit("You need 5 properties\n");
 	value = string_to_value(d, element[1], INF * -1, INF);
 	cy = (t_cylinder *)ft_malloc(sizeof(t_cylinder));
 	cy->type = TYPE_C;

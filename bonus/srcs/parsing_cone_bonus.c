@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_cone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 12:40:27 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/07 12:40:44 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 18:12:32 by naykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parsing_cn(char **element, t_data *d)
 	double	*value;
 
 	if (ft_sstrlen(element) != 6)
-		error_and_exit("You need 6 properties\n");
+		error_and_exit("You need 5 properties\n");
 	value = string_to_value(d, element[1], INF * -1, INF);
 	cn = (t_cone *)ft_malloc(sizeof(t_cone));
 	cn->type = TYPE_CN;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_viewer_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:59:24 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 18:12:07 by naykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	parsing_l(char **element, t_data *d)
 	if (d->parsed.light != 0)
 		error_and_exit("Too many light\n");
 	if (ft_sstrlen(element) != 4)
-		error_and_exit("You need 4 properties\n");
+		error_and_exit("You need 3 properties\n");
 	d->parsed.light = 1;
 	l = &d->light;
 	value = string_to_value(d, element[1], INF * -1, INF);
