@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: naykim <naykim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:12:37 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/07 15:22:44 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 17:33:45 by naykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ t_hit	hit_cone(t_ray ray, t_cone *cone)
 		ret.ratio_reflect = cone->ratio_reflect;
 		ret.hit_normal = vec_unit(minus_value(cp, multi_one(cone->normal,
 						pow(vec_length(cp), 2) / vec_inner(cp, cone->normal))));
-		 if (vec_inner(cp, cone->normal) > 0
-			 			 || fabs(vec_inner(cp, cone->normal)) > cone->height)
-			 	ret.is_hit = FALSE;
+		if (vec_inner(cp, cone->normal) > 0
+			|| fabs(vec_inner(cp, cone->normal)) > cone->height)
+		ret.is_hit = FALSE;
 	}
 	return (ret);
 }
