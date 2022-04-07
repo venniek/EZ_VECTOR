@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:20:26 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:48:05 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 11:17:43 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	parsing_l(char **element, t_data *d);
 void	parsing_sp(char **element, t_data *d);
 void	parsing_pl(char **element, t_data *d);
 void	parsing_cy(char **element, t_data *d);
+void	parsing_cn(char **element, t_data *d);
 void	cap_in_cylinder(t_cylinder *cy, t_data *d);
 
 void	add_object(t_data *d, t_object *new);

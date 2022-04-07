@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:00:23 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:46:19 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 10:39:14 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define WIN_HEIGHT	400
 # define INF 2147483647
 
-# define TYPE_S 0
-# define TYPE_P 1
-# define TYPE_C 2
+# define TYPE_S		0
+# define TYPE_P		1
+# define TYPE_C		2
+# define TYPE_CN	3
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:26:37 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 11:17:14 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	parsing_all(char **element, t_data *d)
 		parsing_pl(element, d);
 	else if (ft_strncmp(type, "cy", 2) == 0 && ft_strlen(type) == 2)
 		parsing_cy(element, d);
+	else if (ft_strncmp(type, "cn", 2) == 0 && ft_strlen(type) == 2)
+		parsing_cn(element, d);
 	else
 	{
 		free(type);

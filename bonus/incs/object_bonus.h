@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:18:09 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 11:59:25 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ typedef struct s_cylinder
 	double			height;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	int				type;
+	t_ratio			ratio_reflect;
+	struct s_object	*next;
+	t_point			point;
+	t_point			c;
+	t_vec			normal;
+	double			r;
+	double			height;
+	double			theta;
+}	t_cone;
+
 typedef struct s_hit
 {
 	int		is_hit;
@@ -67,5 +80,6 @@ t_hit	hit_object(t_ray ray, t_object *objects, int is_shadow);
 t_hit	hit_cylinder(t_ray ray, t_cylinder *cylinder);
 t_hit	hit_plane(t_ray ray, t_plane *plane);
 t_hit	hit_sphere(t_ray ray, t_sphere *sphere);
+t_hit	hit_cone(t_ray ray, t_cone *cone);
 
 #endif

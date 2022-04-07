@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:58:57 by naykim            #+#    #+#             */
-/*   Updated: 2022/04/06 18:13:44 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 12:33:48 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int ac, char **av)
 	map_parsing(ac, av, &d);
 	make_viewer(&d);
 	mlx.mlx = mlx_init();
-	mlx.mlx_win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT_bonus");
+	mlx.mlx_win
+		= mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT_bonus");
 	mlx.img = mlx_new_image(mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	mlx.addr = mlx_get_data_addr
 		(mlx.img, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);

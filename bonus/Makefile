@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+         #
+#    By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 11:59:54 by naykim            #+#    #+#              #
-#    Updated: 2022/04/06 17:37:21 by gyeon            ###   ########.fr        #
+#    Updated: 2022/04/07 12:12:43 by gyeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = main_bonus.c \
 	light_bonus.c\
 	mlx_hook_bonus.c\
 	parsing_bonus.c \
+	parsing_cone_bonus.c \
 	parsing_viewer_bonus.c\
 	three_value_2_bonus.c\
 	viewer_bonus.c\
@@ -30,6 +31,7 @@ SRCS = main_bonus.c \
 	three_value_vector_bonus.c\
 	matrix_bonus.c\
 	object_bonus.c\
+	object2_bonus.c\
 	parsing_utils_bonus.c\
 	three_value_1_bonus.c\
 	utils_bonus.c

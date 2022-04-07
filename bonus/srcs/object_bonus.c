@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyeon <gyeon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gyeon <gyeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:12:37 by gyeon             #+#    #+#             */
-/*   Updated: 2022/04/06 17:47:24 by gyeon            ###   ########.fr       */
+/*   Updated: 2022/04/07 12:34:05 by gyeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,47 +36,6 @@ t_hit	hit_plane(t_ray ray, t_plane *plane)
 	return (result);
 }
 
-t_3value	cal_cylinder_abc(t_ray ray, t_cylinder *cylinder)
-{
-	t_3value	result;
-	t_vec		ce;
-
-	ce = minus_value(ray.source, cylinder->point);
-	result.xr = pow(vec_inner(ray.dir, cylinder->normal), 2) - 1;
-	result.yg = vec_inner(ray.dir, cylinder->normal)
-		* vec_inner(ce, cylinder->normal) - vec_inner(ce, ray.dir);
-	result.zb = pow(cylinder->r, 2) - vec_inner(ce, ce)
-		+ pow(vec_inner(ce, cylinder->normal), 2);
-	return (result);
-}
-
-t_hit	hit_cylinder(t_ray ray, t_cylinder *cylinder)
-{
-	t_hit		ret;
-	t_3value	abc;
-	t_vec		cp;
-	double		det;
-
-	abc = cal_cylinder_abc(ray, cylinder);
-	det = pow(abc.yg, 2) - abc.xr * abc.zb;
-	ret.is_hit = (det >= 0);
-	if (ret.is_hit == TRUE)
-	{
-		ret.t = (sqrt(det) - abc.yg) / abc.xr;
-		if (ret.t < EPSILON)
-			ret.t = - (abc.yg + sqrt(det)) / abc.xr;
-		ret.hit_point = plus_value(multi_one(ray.dir, ret.t), ray.source);
-		cp = minus_value(ret.hit_point, cylinder->point);
-		ret.ratio_reflect = cylinder->ratio_reflect;
-		ret.hit_normal = vec_unit(minus_value(cp, multi_one(cylinder->normal,
-						vec_inner(cp, cylinder->normal))));
-		if (vec_inner(cp, cylinder->normal) < 0
-			|| vec_inner(cp, cylinder->normal) > cylinder->height)
-			ret.is_hit = FALSE;
-	}
-	return (ret);
-}
-
 t_hit	hit_sphere(t_ray ray, t_sphere *sphere)
 {
 	t_hit		result;
@@ -104,6 +63,18 @@ t_hit	hit_sphere(t_ray ray, t_sphere *sphere)
 	return (result);
 }
 
+t_hit	hit_switch(t_ray ray, t_object *objects)
+{
+	if (objects->type == TYPE_S)
+		return (hit_sphere(ray, (t_sphere *)objects));
+	else if (objects->type == TYPE_P)
+		return (hit_plane(ray, (t_plane *)objects));
+	else if (objects->type == TYPE_C)
+		return (hit_cylinder(ray, (t_cylinder *)objects));
+	else
+		return (hit_cone(ray, (t_cone *)objects));
+}
+
 t_hit	hit_object(t_ray ray, t_object *objects, int is_shadow)
 {
 	t_hit		min_ret;
@@ -115,12 +86,7 @@ t_hit	hit_object(t_ray ray, t_object *objects, int is_shadow)
 	min_ret.is_hit = FALSE;
 	while (iter != NULL)
 	{
-		if (iter->type == TYPE_S)
-			tmp = hit_sphere(ray, (t_sphere *)iter);
-		else if (iter->type == TYPE_P)
-			tmp = hit_plane(ray, (t_plane *)iter);
-		else if (iter->type == TYPE_C)
-			tmp = hit_cylinder(ray, (t_cylinder *)iter);
+		tmp = hit_switch(ray, iter);
 		if (tmp.is_hit == TRUE)
 		{
 			if (is_shadow == TRUE && (tmp.t >= EPSILON && tmp.t < min_ret.t))
